@@ -66,9 +66,11 @@ let lastText = "";
 
 async function fetchText() {
   try {
-    const res = await fetch(endpoint);
+    const res = await fetch(endpoint, {
+      headers: { "ngrok-skip-browser-warning": "true" }
+    });
     const text = await res.text();
-
+    
     if (text && text !== lastText) {
       const box = document.getElementById("logBox");
 
